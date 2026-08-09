@@ -29,12 +29,25 @@
     </div>
   </header>
 
+  <!-- Floating Sticky Header (Scroll-Activated) -->
+  <div class="header-sticky" id="header-sticky" aria-hidden="true">
+    <div class="header-sticky__container">
+      <a href="#" class="header-sticky__logo-link" aria-label="Go to top">
+        <img src="assets/footer/logo 2.png" alt="Premier Schools Exhibition logo" class="header-sticky__logo">
+      </a>
+      <a href="#enquire-form" class="header-sticky__btn" aria-label="Register for exhibition now">
+        <span>Register Now</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+
   <!-- Main Content Area -->
   <main id="main-content">
     
     <!-- Hero Section -->
     <section class="hero" aria-label="Exhibition Hero Banner">
-      <div class="container hero__container">
+      <div class="hero__container">
         
         <!-- Hero Left Column: Heading and Badge Info -->
         <div class="hero__content">
@@ -175,16 +188,7 @@
             
             <div class="hero__form-group">
               <label for="grade-select" class="sr-only">Which grade are you looking for?</label>
-              <div class="hero__form-select-wrapper">
-                <select id="grade-select" class="hero__form-input hero__form-select" required aria-required="true">
-                  <option value="" disabled selected hidden>Which grade are you looking for?</option>
-                  <option value="preschool">Preschool / Nursery</option>
-                  <option value="kindergarten">Kindergarten</option>
-                  <option value="primary">Primary (Grades 1-5)</option>
-                  <option value="middle">Middle School (Grades 6-8)</option>
-                  <option value="high">High School (Grades 9-12)</option>
-                </select>
-              </div>
+              <textarea id="grade-select" class="hero__form-input hero__form-textarea" placeholder="Which grade are you looking for?" required aria-required="true"></textarea>
             </div>
             
             <button type="submit" class="hero__form-submit" aria-label="Submit enquiry form">
@@ -409,7 +413,171 @@
       </div>
     </section>
 
+    <!-- Exhibition Promotion / Highlights Slider Section -->
+    <section class="exhibition" aria-label="What Makes This Exhibition a Must-Visit">
+      <div class="exhibition__container">
+        <h2 class="exhibition__title">What Makes This Exhibition a Must-Visit</h2>
+        
+        <div class="exhibition__slider" id="exhibition-slider">
+          <div class="exhibition__track" id="exhibition-track">
+            
+            <!-- Card 1: Interact Directly with School Heads -->
+            <div class="exhibition__card">
+              <div class="exhibition__card-icon-wrapper">
+                <img src="assets/exhibition/Teacher.png" alt="Teacher icon" class="exhibition__card-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="exhibition__card-icon-fallback" style="display:none;">👨‍🏫</span>
+              </div>
+              <h3 class="exhibition__card-title">Interact Directly with School Heads</h3>
+              <p class="exhibition__card-desc">Get answers straight from the experts</p>
+            </div>
+
+            <!-- Card 2: Compare Curriculum & Pedagogy -->
+            <div class="exhibition__card">
+              <div class="exhibition__card-icon-wrapper">
+                <img src="assets/exhibition/fi_1989875.png" alt="Curriculum document icon" class="exhibition__card-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="exhibition__card-icon-fallback" style="display:none;">📝</span>
+              </div>
+              <h3 class="exhibition__card-title">Compare Curriculum & Pedagogy</h3>
+              <p class="exhibition__card-desc">Understand the differences between CBSE, ICSE, IB, Cambridge, Finnish & more</p>
+            </div>
+
+            <!-- Card 3: Get Exclusive Fee Structures & Offers -->
+            <div class="exhibition__card">
+              <div class="exhibition__card-icon-wrapper">
+                <img src="assets/exhibition/fi_560310.png" alt="Percentage coupon icon" class="exhibition__card-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="exhibition__card-icon-fallback" style="display:none;">%</span>
+              </div>
+              <h3 class="exhibition__card-title">Get Exclusive Fee Structures & Offers</h3>
+              <p class="exhibition__card-desc">Access transparent information and avail offers</p>
+            </div>
+
+            <!-- Card 4: Explore Schools Offerings -->
+            <div class="exhibition__card">
+              <div class="exhibition__card-icon-wrapper">
+                <img src="assets/exhibition/fi_8480947.png" alt="Presentation board icon" class="exhibition__card-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="exhibition__card-icon-fallback" style="display:none;">📊</span>
+              </div>
+              <h3 class="exhibition__card-title">Explore Schools Offerings</h3>
+              <p class="exhibition__card-desc">Preview infrastructure, co-curricular, teaching methodology and culture</p>
+            </div>
+
+            <!-- Card 5: On-the-Spot Admissions & Counselling -->
+            <div class="exhibition__card">
+              <div class="exhibition__card-icon-wrapper">
+                <img src="assets/exhibition/fi_942799.png" alt="Admissions consulting icon" class="exhibition__card-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="exhibition__card-icon-fallback" style="display:none;">👥</span>
+              </div>
+              <h3 class="exhibition__card-title">On-the-Spot Admissions & Counselling</h3>
+              <p class="exhibition__card-desc">Save time with instant applications and expert guidance</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slider Navigation Controls -->
+        <div class="exhibition__nav" aria-label="Slider navigation controls">
+          <button class="exhibition__nav-btn exhibition__nav-btn--prev" id="exhibition-prev" aria-label="Previous slide" disabled>
+            <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+          </button>
+          <button class="exhibition__nav-btn exhibition__nav-btn--next" id="exhibition-next" aria-label="Next slide">
+            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Downward Curved Wave overlay at the bottom of the section -->
+      <div class="exhibition__curve" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path d="M0,0 Q720,120 1440,0 L1440,120 L0,120 Z" fill="#ffffff"></path>
+        </svg>
+      </div>
+    </section>
+
   </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__grid">
+        
+        <!-- Column 1: Logo -->
+        <div class="footer__col footer__col--logo">
+          <img src="assets/footer/logo 2.png" alt="Premier Schools Exhibition logo" class="footer__logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <span class="footer__logo-fallback" style="display:none;">PSE LOGO</span>
+        </div>
+
+        <!-- Column 2: Corporate Office -->
+        <div class="footer__col">
+          <div class="footer__info-item">
+            <div class="footer__icon-wrapper">
+              <img src="assets/footer/Group 1171275367.png" alt="Location pin icon" class="footer__icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span class="footer__icon-fallback" style="display:none;">📍</span>
+            </div>
+            <div class="footer__info-content">
+              <h4 class="footer__info-title">Corporate Office:</h4>
+              <p class="footer__info-text">Suite B-5, Ballygunge Park Tower, 67B Ballygunge Circular Road, Kolkata - 700019</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: Ahmedabad Office -->
+        <div class="footer__col">
+          <div class="footer__info-item">
+            <div class="footer__icon-wrapper">
+              <img src="assets/footer/Group 1171275367.png" alt="Location pin icon" class="footer__icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span class="footer__icon-fallback" style="display:none;">📍</span>
+            </div>
+            <div class="footer__info-content">
+              <h4 class="footer__info-title">Ahmedabad Office:</h4>
+              <p class="footer__info-text">12/AA, Swastik Chambers, Near CU Shah College, Ashram Road, Ahmedabad - 380009</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 4: Call us on -->
+        <div class="footer__col">
+          <div class="footer__info-item">
+            <div class="footer__icon-wrapper">
+              <img src="assets/footer/Group 1171275367 (1).png" alt="Phone icon" class="footer__icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span class="footer__icon-fallback" style="display:none;">📞</span>
+            </div>
+            <div class="footer__info-content">
+              <h4 class="footer__info-title">Call us on</h4>
+              <p class="footer__info-text">
+                <a href="tel:+919674805912">9674805912</a><br>
+                <a href="tel:+919674585012">9674585012</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 5: Follow us on -->
+        <div class="footer__col footer__col--social">
+          <h4 class="footer__info-title">Follow us on</h4>
+          <div class="footer__social-links">
+            <a href="#" class="footer__social-btn" aria-label="Instagram">
+              <img src="assets/footer/Group 1171275371.png" alt="Instagram logo" class="footer__social-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span class="footer__social-fallback" style="display:none;">📸</span>
+            </a>
+            <a href="#" class="footer__social-btn" aria-label="Facebook">
+              <img src="assets/footer/Group 1171275372.png" alt="Facebook logo" class="footer__social-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span class="footer__social-fallback" style="display:none;">📘</span>
+            </a>
+            <a href="#" class="footer__social-btn" aria-label="YouTube">
+              <img src="assets/footer/Group 1171275373.png" alt="YouTube logo" class="footer__social-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span class="footer__social-fallback" style="display:none;">▶️</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sub-footer copyright bar -->
+    <div class="footer__copyright">
+      <p>Copyright 2025 | All rights reserved. Premier Schools Exhibition</p>
+    </div>
+  </footer>
 
   <!-- Core Scripts -->
   <script src="js/sliders.js"></script>

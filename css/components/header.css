@@ -38,16 +38,11 @@
   overflow: hidden;
   height: 42px;
   margin-left: auto; /* Pushes the register button to the far right */
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: opacity var(--transition-fast);
 }
 
 .header__register:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(18, 9, 56, 0.15);
-}
-
-.header__register:active {
-  transform: translateY(0);
+  opacity: 0.9;
 }
 
 .header__register-icon {
@@ -100,6 +95,90 @@
   
   .header__register-text {
     padding: 0 var(--spacing-md);
+    font-size: 0.75rem;
+  }
+}
+
+/* Floating Sticky Header (Scroll-Activated) Styles */
+.header-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Sized to fit logo and btn elegantly */
+  background: linear-gradient(180deg, #18093a 0%, #0d0426 100%); /* Matching footer deep indigo-navy gradient */
+  border-bottom: 1.5px solid rgba(235, 215, 255, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  transform: translateY(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-sticky--active {
+  transform: translateY(0);
+}
+
+.header-sticky__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.header-sticky__logo-link {
+  display: flex;
+  align-items: center;
+  height: 80px; /* Increased logo height */
+}
+
+.header-sticky__logo {
+  height: 100%;
+  width: auto;
+}
+
+.header-sticky__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-white);
+  color: #0b0426; /* Dark navy text */
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1.5px solid var(--color-white);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.header-sticky__btn:hover,
+.header-sticky__btn:focus-visible {
+  background-color: #ead7ff;
+  color: #0b0426;
+  outline: none;
+}
+
+/* Responsive Sticky Header */
+@media (max-width: 768px) {
+  .header-sticky {
+    height: 70px;
+  }
+  .header-sticky__container {
+    padding: 0 var(--spacing-md);
+  }
+  .header-sticky__logo-link {
+    height: 38px;
+  }
+  .header-sticky__btn {
+    padding: 8px 16px;
     font-size: 0.75rem;
   }
 }

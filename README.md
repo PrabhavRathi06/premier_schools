@@ -2,14 +2,14 @@
 
 A premium, high-performance, and fully responsive desktop-first landing page designed for the Premier Schools Exhibition (PSE) in Gurugram. 
 
-## 🔗 Project Links
+## Project Links
 
 *   **Live Vercel Deployment:** [https://premier-schools-swart.vercel.app/](https://premier-schools-swart.vercel.app/)
 *   **GitHub Repository:** [https://github.com/PrabhavRathi06/premier_schools](https://github.com/PrabhavRathi06/premier_schools)
 
 ---
 
-## 🚀 Key Features Implemented
+## Key Features Implemented
 
 1.  **Header Section (Hanging Logo Layout)**
     *   Figma-accurate hanging logo badge overlay (`top: 3px`, `left: 76px`, `width: 201px`, `height: 157px`).
@@ -36,10 +36,13 @@ A premium, high-performance, and fully responsive desktop-first landing page des
     *   Title sized at `64px` and tagline at `32px` styled with gradient fills (`#000E38` to `#3F186A`).
     *   Title lines wrapped in spans to prevent wrapping issues on smaller desktop resolutions.
     *   Seamless CSS edge masking (`mask-image` / `-webkit-mask-image`) on the image container for both desktop and mobile viewports.
+8.  **Scroll-Triggered Floating Header**
+    *   Slide-down sticky header bar with a custom translucent purple gradient background (`#18093a` to `#0d0426`) and backdrop blur.
+    *   Contains the inline square logo (`logo 2.png`) and solid register button, activated on scroll past 150px and hidden at the top.
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 *   **Core Structure:** Semantic HTML5
 *   **Styling System:** Vanilla CSS3 (utilizing BEM methodology and CSS Custom Properties/Variables)
@@ -47,7 +50,7 @@ A premium, high-performance, and fully responsive desktop-first landing page des
 
 ---
 
-## 📁 Codebase Structure
+## Codebase Structure
 
 ```text
 ├── assets/
@@ -76,7 +79,7 @@ A premium, high-performance, and fully responsive desktop-first landing page des
 
 ---
 
-## ⚙️ Running Locally
+## Running Locally
 
 1.  Clone the repository:
     ```bash

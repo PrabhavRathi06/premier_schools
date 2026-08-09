@@ -20,6 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Initialize School Logos Marquee
   const logoMarquee = new window.LogoMarquee('.marquee__track');
 
+  // 2b. Initialize Exhibition Highlights Slider
+  const exhibitionSlider = new window.ExhibitionSlider(
+    'exhibition-slider',
+    'exhibition-track',
+    'exhibition-prev',
+    'exhibition-next'
+  );
+
   // 3. Handle Enquire Now Form Submission
   const enquireForm = document.getElementById('enquire-form');
   if (enquireForm) {
@@ -44,6 +52,21 @@ document.addEventListener('DOMContentLoaded', () => {
           <p style="font-size: 0.95rem;">Thank you for your interest, <strong>${parentName}</strong>. Our admissions counselor will contact you shortly at <strong>${phoneNumber}</strong>.</p>
         </div>
       `;
+    });
+  }
+
+  // 4. Scroll-Triggered Sticky Header controller
+  const stickyHeader = document.getElementById('header-sticky');
+  if (stickyHeader) {
+    window.addEventListener('scroll', () => {
+      // Slide down sticky header when scroll is past 150px
+      if (window.scrollY > 150) {
+        stickyHeader.classList.add('header-sticky--active');
+        stickyHeader.setAttribute('aria-hidden', 'false');
+      } else {
+        stickyHeader.classList.remove('header-sticky--active');
+        stickyHeader.setAttribute('aria-hidden', 'true');
+      }
     });
   }
 });

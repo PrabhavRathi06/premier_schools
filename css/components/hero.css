@@ -10,12 +10,16 @@
 
 .hero__container {
   display: grid;
-  grid-template-columns: 1.15fr 1.35fr 1fr; /* Expanded middle column for wider ovals */
+  grid-template-columns: 0.85fr 1.75fr 1.4fr; /* Adjusted column ratios to give the form more room */
   gap: var(--spacing-xl);
   align-items: center;
   height: 100%;
   position: relative;
   z-index: 10;
+  width: 100%;
+  max-width: 1720px; /* Align to the wider layout of the rest of the website */
+  margin: 0 auto;
+  padding: 0 60px;
 }
 
 /* Left Column Content */
@@ -133,7 +137,7 @@
 
 /* Image Capsules with object-fit crop to focus on the center */
 .hero__capsule {
-  height: 260px; /* Scaled height to fit ~2.3 capsules vertically inside 620px background */
+  height: 360px; /* Increased height to make the flowing images larger */
   width: 100%;
   border-radius: var(--radius-pill);
   overflow: hidden;
@@ -141,7 +145,7 @@
   border: 3px solid rgba(255, 255, 255, 0.1);
   box-shadow: var(--shadow-lg);
   background-color: var(--color-primary);
-  margin-bottom: 20px; /* Constant margin used for seamless loop calculation */
+  margin-bottom: 30px; /* Increased margin for better spacing */
 }
 
 .hero__capsule img {
@@ -187,37 +191,49 @@
 }
 
 .hero__form {
-  background-color: var(--color-form-bg);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl) var(--spacing-xl);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(6, 21, 50, 0.45) 100%); /* Figma translucent gradient colors */
+  backdrop-filter: blur(25px); /* Figma exact Background blur: 25 */
+  border-radius: 12px; /* Figma exact border radius */
+  padding: 26px 22px; /* Balanced mid-size padding */
   width: 100%;
-  max-width: 380px;
+  max-width: 360px; /* Set smaller max-width to display shrink on laptops */
+  min-height: 365px; /* Mid-size minimum height */
   box-shadow: var(--shadow-lg), 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: none;
 }
 
 .hero__form-title {
-  font-size: 1.75rem;
-  font-weight: 800;
+  font-family: var(--font-heading); /* Outfit */
+  font-size: 28px; /* Mid-size title size */
+  font-weight: 600; /* Figma exact weight */
   color: var(--color-white);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 16px; /* Mid-size margin */
+  line-height: 1.2;
 }
 
 .hero__form-group {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 12px; /* Mid-size margin */
   position: relative;
 }
 
 .hero__form-input {
-  background-color: var(--color-input-bg);
-  border: 1.5px solid var(--color-input-border);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(255, 255, 255, 0.08); /* Figma translucent input fields */
+  border: none;
+  border-radius: 10px;
+  height: 48px; /* Mid-size height */
+  padding: 0 18px;
   color: var(--color-white);
   width: 100%;
-  font-size: 0.9rem;
-  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  font-size: 15px;
+  font-family: var(--font-primary); /* Open Sans */
+  transition: background-color var(--transition-fast);
+}
+
+.hero__form-textarea {
+  height: 72px; /* Mid-size textarea height */
+  padding: 14px 18px;
+  resize: none;
+  line-height: 1.4;
 }
 
 .hero__form-input::placeholder {
@@ -225,76 +241,52 @@
 }
 
 .hero__form-input:focus {
-  border-color: var(--color-accent);
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Custom Select Dropdown Styling */
-.hero__form-select-wrapper {
-  position: relative;
-}
-
-.hero__form-select-wrapper::after {
-  content: '▼';
-  font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.6);
-  position: absolute;
-  right: var(--spacing-md);
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-.hero__form-select {
-  appearance: none;
-  cursor: pointer;
-  padding-right: var(--spacing-xl);
-}
-
-.hero__form-select option {
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Submit Button with Custom Dual layout */
 .hero__form-submit {
   display: inline-flex;
   align-items: stretch;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-sm);
+  height: 48px; /* Match input height */
+  width: 200px; /* Mid-size width */
+  margin-top: 14px; /* Mid-size margin */
+  border-radius: 6px;
   overflow: hidden;
-  height: 42px;
-  width: 100%;
-  margin-top: var(--spacing-md);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+  border: none;
+  transition: opacity var(--transition-fast);
 }
 
 .hero__form-submit:hover {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 12px rgba(233, 196, 122, 0.2);
+  opacity: 0.9;
 }
 
 .hero__form-submit-icon {
   background-color: var(--color-white);
-  color: var(--color-primary);
+  color: #271442;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
+  width: 48px; /* Match submit button height */
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
 .hero__form-submit-text {
   background-color: #271442;
   color: var(--color-white);
+  border: 2px solid var(--color-white);
+  border-left: 2px solid var(--color-white); /* White vertical separator */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
   font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 0.85rem;
+  font-weight: 700;
+  font-size: 14px;
   letter-spacing: 0.1em;
 }
 
@@ -306,6 +298,19 @@
 }
 
 /* Responsive Styles for Hero */
+@media (max-width: 1366px) {
+  .hero__title {
+    font-size: 38px; /* Scales down the title font size to prevent overlapping */
+  }
+  .hero__container {
+    grid-template-columns: 1.25fr 1fr 1.15fr; /* Tightens the middle gallery column and widens text & form */
+    gap: var(--spacing-md);
+  }
+  .hero__badge {
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+}
+
 @media (max-width: 1100px) {
   .hero {
     height: auto; /* Reset fixed height when gallery columns are hidden */

@@ -1,0 +1,6 @@
+This folder will contain the icon and graphic assets for the "What Makes This Exhibition a Must-Visit" card slider section.
+- icon-interact.png / .svg
+- icon-compare.png / .svg
+- icon-fees.png / .svg
+- icon-offerings.png / .svg
+- icon-admissions.png / .svg

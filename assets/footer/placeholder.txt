@@ -1,0 +1,7 @@
+This folder will contain the icon and logo assets for the footer section.
+- footer-logo.png
+- icon-pin.png (Location pin)
+- icon-phone.png (Phone receiver)
+- icon-instagram.png
+- icon-facebook.png
+- icon-youtube.png

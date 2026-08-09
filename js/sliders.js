@@ -240,3 +240,76 @@ class DualAxisSlider {
 
 // Export classes for main application
 window.DualAxisSlider = DualAxisSlider;
+
+class ExhibitionSlider {
+  constructor(sliderId, trackId, prevBtnId, nextBtnId) {
+    this.slider = document.getElementById(sliderId);
+    this.track = document.getElementById(trackId);
+    this.prevBtn = document.getElementById(prevBtnId);
+    this.nextBtn = document.getElementById(nextBtnId);
+
+    if (!this.slider || !this.track || !this.prevBtn || !this.nextBtn) return;
+
+    this.currentTranslate = 0;
+    this.cardWidth = 350; // px
+    this.gap = 24; // px
+    this.step = this.cardWidth + this.gap; // 374px
+
+    this.init();
+  }
+
+  init() {
+    this.bindEvents();
+    this.updateButtons();
+    
+    // Recalculate layout limits on window resize
+    window.addEventListener('resize', () => {
+      this.currentTranslate = Math.min(this.currentTranslate, this.getMaxTranslate());
+      this.updateTrack();
+      this.updateButtons();
+    });
+    
+    // Wait for full load to correctly compute scroll widths
+    window.addEventListener('load', () => {
+      this.updateButtons();
+    });
+  }
+
+  getMaxTranslate() {
+    const containerWidth = this.slider.offsetWidth;
+    const trackWidth = this.track.scrollWidth;
+    return Math.max(0, trackWidth - containerWidth);
+  }
+
+  bindEvents() {
+    this.nextBtn.addEventListener('click', () => {
+      const maxTranslate = this.getMaxTranslate();
+      this.currentTranslate = Math.min(this.currentTranslate + this.step, maxTranslate);
+      this.updateTrack();
+      this.updateButtons();
+    });
+
+    this.prevBtn.addEventListener('click', () => {
+      this.currentTranslate = Math.max(0, this.currentTranslate - this.step);
+      this.updateTrack();
+      this.updateButtons();
+    });
+  }
+
+  updateTrack() {
+    this.track.style.transform = `translate3d(-${this.currentTranslate}px, 0, 0)`;
+  }
+
+  updateButtons() {
+    const maxTranslate = this.getMaxTranslate();
+    
+    // Disable previous button if we are at the start
+    this.prevBtn.disabled = this.currentTranslate === 0;
+    
+    // Disable next button if we have scrolled to the end
+    this.nextBtn.disabled = this.currentTranslate >= maxTranslate;
+  }
+}
+
+// Export for main application
+window.ExhibitionSlider = ExhibitionSlider;

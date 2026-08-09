@@ -1,0 +1,6 @@
+/* Footer styles placeholder */
+.footer {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  padding: var(--spacing-xxl) 0 var(--spacing-xl);
+}

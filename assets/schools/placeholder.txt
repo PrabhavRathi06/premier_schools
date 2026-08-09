@@ -1,0 +1,5 @@
+This folder will contain the 4 card cover images for the "Choose the School That Fits You Best" section:
+- preschool.jpg (Pre-Schools & Early Learning)
+- cbse.jpg (K-12 CBSE Day Schools)
+- heritage.jpg (Heritage to New-Age Schools)
+- international.jpg (International Curriculum Schools)

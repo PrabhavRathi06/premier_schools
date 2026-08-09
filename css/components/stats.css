@@ -1,0 +1,79 @@
+.stats {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--color-white);
+}
+
+.stats__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+}
+
+.stats__item {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats__wreath-wrapper {
+  position: relative;
+  width: 170px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.stats__wreath-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  object-fit: contain; /* Prevents distorting the flower design */
+}
+
+.stats__text {
+  position: relative;
+  z-index: 2;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;     /* Scaled proportionally for visual pixel perfection */
+  line-height: 1.35;   /* Clean line spacing */
+  font-weight: 400;
+  text-align: center;
+  width: 130px;        /* Spans correctly inside the wreath boundaries */
+  /* Figma Primary Color Linear Gradient */
+  background: linear-gradient(180deg, #010e39 0%, #0344a2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.stats__text strong {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 17px;     /* Emphasized numbers */
+  font-weight: 700;     /* Figma 700 bold span */
+  display: inline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .stats__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats__container {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,7 @@
+/* General responsive style overrides placeholder */
+@media (max-width: 1200px) {
+  .container {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+}

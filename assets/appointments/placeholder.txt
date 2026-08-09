@@ -1,0 +1,1 @@
+This folder will contain the parent-school appointment banner image (e.g. event.jpg or banner.jpg).

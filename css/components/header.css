@@ -1,0 +1,105 @@
+.header {
+  background-color: var(--color-white);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 100;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo styling - Hanging logo badge style matching Figma exact positions */
+.header__logo {
+  position: absolute;
+  top: 3px;
+  left: 76px;
+  z-index: 110;
+}
+
+.header__logo-img {
+  width: 201px;
+  height: 157px;
+  object-fit: contain;
+}
+
+/* Register Button - Custom double column block */
+.header__register {
+  display: inline-flex;
+  align-items: stretch;
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 42px;
+  margin-left: auto; /* Pushes the register button to the far right */
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.header__register:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(18, 9, 56, 0.15);
+}
+
+.header__register:active {
+  transform: translateY(0);
+}
+
+.header__register-icon {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.header__register-text {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-lg);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 70px;
+  }
+  
+  .header__logo {
+    position: static;
+  }
+  
+  .header__logo-img {
+    width: auto;
+    height: 46px;
+  }
+  
+  .header__register {
+    height: 36px;
+  }
+  
+  .header__register-icon {
+    width: 36px;
+    font-size: 0.95rem;
+  }
+  
+  .header__register-text {
+    padding: 0 var(--spacing-md);
+    font-size: 0.75rem;
+  }
+}

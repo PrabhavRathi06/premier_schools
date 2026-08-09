@@ -1,0 +1,194 @@
+.appointments {
+  background: linear-gradient(180deg, #ead7ff 0%, #dec1ff 100%); /* Figma exact background colors */
+  position: relative;
+  overflow: hidden;
+  min-height: 725px; /* Height remains unchanged */
+  display: flex;
+  align-items: center;
+}
+
+.appointments__container {
+  max-width: 100%; /* Spans full screen width to remove white space */
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.appointments__banner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 725px; /* Height remains unchanged */
+  display: flex;
+}
+
+.appointments__content {
+  padding: 60px;
+  /* Aligns text content edge perfectly with our page container max-width (1720px) + padding (100px) */
+  padding-left: max(100px, calc((100vw - 1720px) / 2 + 100px));
+  width: 50%; /* Text occupies the left half of the banner */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+.appointments__tagline {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 32px; /* Figma exact size */
+  font-weight: 400; /* Figma exact weight */
+  line-height: 1.5; /* Figma 150% line-height */
+  margin-bottom: var(--spacing-sm);
+  background: linear-gradient(180deg, #755797 0%, #9b4df0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.appointments__title {
+  font-family: var(--font-heading);
+  font-size: 64px; /* Figma exact size */
+  font-weight: 400; /* Figma exact weight (regular) */
+  line-height: 1.3; /* Figma 130% line-height */
+  margin-bottom: var(--spacing-sm);
+  background: linear-gradient(180deg, #000e38 0%, #3f186a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
+
+.appointments__title-line {
+  display: inline-block;
+  white-space: nowrap; /* Prevents title lines wrapping on desktop viewports */
+}
+
+.appointments__subtagline {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 32px; /* Figma exact size */
+  font-weight: 400; /* Figma exact weight */
+  line-height: 1.5; /* Figma 150% line-height */
+  margin-bottom: var(--spacing-xl);
+  background: linear-gradient(180deg, #755797 0%, #9b4df0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Custom Button (Icon Box + Text Box layout matching Figma) */
+.appointments__btn {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1.5px solid #000e38;
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  width: max-content;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.appointments__btn:hover,
+.appointments__btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.appointments__btn-icon {
+  background-color: #000e38;
+  color: var(--color-white);
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.appointments__btn-text {
+  background-color: #ebdffc; /* Button text box matches lavender */
+  color: #000e38;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  transition: background-color var(--transition-fast);
+}
+
+.appointments__btn:hover .appointments__btn-text {
+  background-color: #dfd1f3; /* Slightly darker hover accent */
+}
+
+/* Right Side Image Block */
+.appointments__image-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 53%; /* Takes just over half the screen */
+  height: 100%;
+  z-index: 1;
+  /* Premium CSS masking to fade image edges seamlessly into background gradient */
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 35%);
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 35%);
+}
+
+.appointments__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive Scaling */
+@media (max-width: 1024px) {
+  .appointments {
+    padding: var(--spacing-lg) 0;
+  }
+  .appointments__container {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+  .appointments__banner {
+    flex-direction: column;
+    height: auto;
+    border-radius: 16px;
+  }
+  .appointments__content {
+    width: 100%;
+    padding: var(--spacing-xl) 30px;
+    background: transparent; /* Let background gradient shine through */
+    z-index: 4;
+  }
+  .appointments__image-container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    /* Vertical fade masking for mobile stacking */
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%);
+  }
+  .appointments__title {
+    font-size: 2.25rem;
+  }
+  .appointments__title-line {
+    white-space: normal; /* Allow natural wrapping on smaller mobile viewports */
+  }
+}
+
+@media (max-width: 480px) {
+  .appointments__content {
+    padding: var(--spacing-lg) 20px;
+  }
+  .appointments__title {
+    font-size: 1.75rem;
+  }
+  .appointments__image-container {
+    height: 280px;
+  }
+}

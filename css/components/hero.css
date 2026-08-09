@@ -1,0 +1,354 @@
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, #2a1459 0%, #3f186a 70%, #592692 100%);
+  color: var(--color-text-light);
+  height: 620px; /* Fixed height for desktop to crop gallery edges */
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero__container {
+  display: grid;
+  grid-template-columns: 1.15fr 1.35fr 1fr; /* Expanded middle column for wider ovals */
+  gap: var(--spacing-xl);
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* Left Column Content */
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.15; /* Reduced from 1.5 to bring line 1 and 2 closer */
+  margin-bottom: 8px; /* Restrict spacing between title and subtitle */
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero__title-top {
+  background: linear-gradient(to right, #ffcc81 0%, #e9c79f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  white-space: nowrap; /* Prevents text wrapping on desktop */
+}
+
+.hero__title--highlight {
+  background: linear-gradient(to right, #ffcc81 0%, #e9c79f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero__subtitle {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.2; /* Reduced from 1.5 to keep subtitle text tight */
+  text-transform: uppercase;
+  letter-spacing: 0;
+  background: linear-gradient(to right, #ffcc81 0%, #e9c79f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  margin-bottom: var(--spacing-xl); /* Reduced from xxl to bring the venue badge closer */
+}
+
+/* Badge location/date details */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+  align-self: flex-start;
+}
+
+.hero__badge-location,
+.hero__badge-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__badge-location strong,
+.hero__badge-date strong {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.hero__badge-location span,
+.hero__badge-date span {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.hero__badge-divider {
+  width: 1.5px;
+  height: 32px;
+  background-color: rgba(18, 9, 56, 0.15);
+  margin: 0 var(--spacing-lg);
+}
+
+/* Middle Column: 3-Column Vertical Waterfall Gallery */
+.hero__gallery-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  height: 100%; /* Spans full height of the background */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  align-self: stretch; /* Stretches from top to bottom border of background */
+}
+
+.hero__gallery-col {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero__gallery-track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+/* Pause animations on hover or focus of the gallery */
+.hero__gallery-container:hover .hero__gallery-track,
+.hero__gallery-container:focus-within .hero__gallery-track {
+  animation-play-state: paused;
+}
+
+/* Image Capsules with object-fit crop to focus on the center */
+.hero__capsule {
+  height: 260px; /* Scaled height to fit ~2.3 capsules vertically inside 620px background */
+  width: 100%;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-primary);
+  margin-bottom: 20px; /* Constant margin used for seamless loop calculation */
+}
+
+.hero__capsule img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* Crops outer bounds and scales to fit container */
+  object-position: center;   /* Focuses on the center of the image */
+  transition: transform var(--transition-normal);
+}
+
+.hero__capsule:hover img {
+  transform: scale(1.08);
+}
+
+/* Seamless Vertical Scroll Keyframe */
+@keyframes scrollVerticalUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    /* Moves up by exactly 3 capsules + their margins: 3 * (200px + 15px) = 645px */
+    transform: translateY(-50%);
+  }
+}
+
+/* Waterfall offset speeds for dynamic premium feel */
+.hero__gallery-track--col-1 {
+  animation: scrollVerticalUp 16s linear infinite;
+}
+
+.hero__gallery-track--col-2 {
+  animation: scrollVerticalUp 11s linear infinite;
+}
+
+.hero__gallery-track--col-3 {
+  animation: scrollVerticalUp 20s linear infinite;
+}
+
+/* Right Column: Enquire Form */
+.hero__form-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero__form {
+  background-color: var(--color-form-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl) var(--spacing-xl);
+  width: 100%;
+  max-width: 380px;
+  box-shadow: var(--shadow-lg), 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hero__form-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero__form-group {
+  margin-bottom: var(--spacing-md);
+  position: relative;
+}
+
+.hero__form-input {
+  background-color: var(--color-input-bg);
+  border: 1.5px solid var(--color-input-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-white);
+  width: 100%;
+  font-size: 0.9rem;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.hero__form-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hero__form-input:focus {
+  border-color: var(--color-accent);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Select Dropdown Styling */
+.hero__form-select-wrapper {
+  position: relative;
+}
+
+.hero__form-select-wrapper::after {
+  content: '▼';
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  right: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.hero__form-select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: var(--spacing-xl);
+}
+
+.hero__form-select option {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Submit Button with Custom Dual layout */
+.hero__form-submit {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  height: 42px;
+  width: 100%;
+  margin-top: var(--spacing-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hero__form-submit:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 12px rgba(233, 196, 122, 0.2);
+}
+
+.hero__form-submit-icon {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.hero__form-submit-text {
+  background-color: #271442;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+
+/* Prefer reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero__gallery-track {
+    animation: none !important;
+  }
+}
+
+/* Responsive Styles for Hero */
+@media (max-width: 1100px) {
+  .hero {
+    height: auto; /* Reset fixed height when gallery columns are hidden */
+    padding: var(--spacing-xxl) 0;
+  }
+
+  .hero__container {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .hero__gallery-container {
+    display: none; /* Hide gallery columns on tablet to prioritize space for form & text */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .hero__container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  
+  .hero__content {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hero__title {
+    font-size: 2.5rem;
+  }
+  
+  .hero__subtitle {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .hero__badge {
+    align-self: center;
+  }
+  
+  .hero__form-container {
+    justify-content: center;
+  }
+}

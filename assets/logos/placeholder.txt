@@ -1,0 +1,1 @@
+This folder will contain the school logo images for the marquee (e.g. Harrow, Shrewsbury, etc.).
